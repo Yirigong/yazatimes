@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>남은 시간</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Gothic+A1&family=Noto+Sans+KR:wght@900&display=swap');
+            body {
+                text-align: center;
+            }
+            a {
+                text-align: center;
+                font-size: 40px;
+                font-family: 'Noto Sans KR', sans-serif;
+                color: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <br><br><br><br>
+        <img src="C:\Users\jnj20\Desktop\html\디미고시간\시간표.jpg"
+        style= float:left; margin-right:20px; width='550px' alt='시정표가 안보이면 개발자(@janu_0120)에게 DM주세요'
+        >
+        <a style="color: black; font-size: 40px;"id = "backhome">기숙사로 돌아가기까지</a>
+        <a style="color: rgb(244, 11, 126); font-size: 50px" id="second_fin">0시간 0분 0초</a>
+        <a style="color:black; font-size: 40px" id = "remain">남았습니다</a>
+<br><br><br><br><br>
+         <a style="color: rgb(244, 11, 126); font-size: 60px;">오늘은</a><br>
+         <a id="day-date" style="color: black; font-size: 30px;">0년 0월 0일 0요일 입니다. </a>
+         <br><br><br><br><br><br>
+         <a style="color: rgb(150, 150, 150); font-size: 15px;">🔥@janu_0120 팔로우🔥</a><br>
+         <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">오류 및 업그레이드 제보 부탁드립니다!</a>
+ <script>
+    setTimeout(function(){
+        location.reload();
+    },300000);
+    
+    var now = new Date(); //현재시간을 구한다.
+    var d = now.getDate();
+    var m = now.getMonth();
+    var y = now.getFullYear();
+    m = m + 1;
+    if (m < 10) {
+  	m = "0" + m;
+    }
+  
+    if (d < 10) {
+  	d = "0" + d;
+    }
+
+var start = m + "/" + d + "/" + y + " " + "10:20:27"
+var firsts = m + "/" + d + "/" + y + " " + "20:20:27"
+var second = m + "/" + d + "/" + y + " " + "21:00:27"
+var third = m + "/" + d + "/" + y + " " + "22:30:27"
+
+CountDownTimer(start, 'first_start');
+CountDownTimer(firsts, 'first_okay');
+CountDownTimer(second, 'first_fin');
+CountDownTimer(third, 'second_fin');
+
+function CountDownTimer(dt, id)
+{
+var end = new Date(dt);
+
+var _second = 1000;
+var _minute = _second * 60;
+var _hour = _minute * 60;
+var _day = _hour * 24;
+var timer;
+
+function getTodayLabel() {
+    
+    var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
+    
+    var today = new Date().getDay();
+    var todayLabel = week[today];
+    
+    return todayLabel;
+}
+ 
+today_week=getTodayLabel()
+
+
+function showRemaining() {
+var now = new Date();
+var distance = end - now;
+if (distance < 0) {
+
+clearInterval(timer);
+document.getElementById(id).innerHTML = '오늘 하루 수고하셨습니다.';
+document.getElementById('backhome').style.display="none"
+document.getElementById('remain').style.display="none"
+return;
+}
+var days = Math.floor(distance / _day);
+var hours = Math.floor((distance % _day) / _hour);
+var minutes = Math.floor((distance % _hour) / _minute);
+var seconds = Math.floor((distance % _minute) / _second);
+
+document.getElementById(id).innerHTML = hours + '시간 ';
+document.getElementById(id).innerHTML += minutes + '분 ';
+document.getElementById(id).innerHTML += seconds + '초';
+document.getElementById('day-date').innerHTML = y +'년 '+ m + '월 ' + d +'일 ' + today_week + ' 입니다.';
+}
+timer = setInterval(showRemaining, 1000);
+}
+</script>
+
+    </body>
+</html>
