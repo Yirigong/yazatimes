@@ -17,16 +17,17 @@
     </head>
     <body>
         <br><br><br><br>
-        <img src="https://user-images.githubusercontent.com/79938350/111904464-7819aa80-8a8a-11eb-8c4c-7bfe1bda3f1e.jpg"
+        <img src="C:\Users\jnj20\Desktop\html\디미고시간\시간표_평일.png" id="timestep"
         style= float:left; margin-right:20px; width='600px' alt='시정표가 안보이면 개발자(@janu_0120)에게 DM주세요'
         >
-        <a style="color: black; font-size: 30px;"id = "backhome">기숙사로 돌아가기까지</a>
-        <a style="color: rgb(244, 11, 126); font-size: 50px" id="second_fin">0시간 0분 0초</a>
-        <a style="color:black; font-size: 30px" id = "remain">남았습니다</a>
-<br><br><br><br><br>
+        
          <a style="color: black; font-size: 60px;">오늘은</a><br>
          <a id="day-date" style="color: rgb(244, 11, 126); font-size: 30px;">0년 0월 0일 0요일 입니다. </a>
          <br><br><br><br><br><br>
+         <a style="color: black; font-size: 30px;"id = "backhome">기숙사로 돌아가기까지</a>
+        <a style="color: rgb(244, 11, 126); font-size: 50px" id="second_fin">0시간 0분 0초</a>
+        <a style="color:black; font-size: 30px" id = "remain">남았습니다</a>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
          <a style="color: rgb(150, 150, 150); font-size: 15px;">🔥@janu_0120 팔로우🔥</a><br>
          <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">오류 및 업그레이드 제보 부탁드립니다!</a>
  <script>
@@ -34,7 +35,7 @@
         location.reload();
     },300000);
     
-    var now = new Date(); //현재시간을 구한다.
+    var now = new Date(); 
     var d = now.getDate();
     var m = now.getMonth();
     var y = now.getFullYear();
@@ -47,15 +48,12 @@
   	d = "0" + d;
     }
 
-var start = m + "/" + d + "/" + y + " " + "10:20:27"
-var firsts = m + "/" + d + "/" + y + " " + "20:20:27"
-var second = m + "/" + d + "/" + y + " " + "21:00:27"
-var third = m + "/" + d + "/" + y + " " + "22:30:27"
 
-CountDownTimer(start, 'first_start');
-CountDownTimer(firsts, 'first_okay');
-CountDownTimer(second, 'first_fin');
-CountDownTimer(third, 'second_fin');
+var weekday = m + "/" + d + "/" + y + " " + "22:00:00"
+var weekend = m + "/" + d + "/" + y + " " + "22:30:00"
+
+
+CountDownTimer(weekday, 'second_fin');
 
 function CountDownTimer(dt, id)
 {
@@ -83,6 +81,8 @@ today_week=getTodayLabel()
 function showRemaining() {
 var now = new Date();
 var distance = end - now;
+    console.log();
+
 if (distance < 0) {
 
 clearInterval(timer);
@@ -91,6 +91,8 @@ document.getElementById('backhome').style.display="none"
 document.getElementById('remain').style.display="none"
 return;
 }
+
+
 var days = Math.floor(distance / _day);
 var hours = Math.floor((distance % _day) / _hour);
 var minutes = Math.floor((distance % _hour) / _minute);
