@@ -1,1 +1,1 @@
-# JunNJ0120.github.io
+# KDMHS 1학년 6반용 시간 알리미
