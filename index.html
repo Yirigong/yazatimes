@@ -23,11 +23,14 @@
         
          <a style="color: black; font-size: 60px;">오늘은</a><br>
          <a id="day-date" style="color: rgb(244, 11, 126); font-size: 30px;">0년 0월 0일 0요일 입니다. </a>
-         <br><br><br><br><br><br><br><br><br>
+         <br><br><br><br><br><br><br><br>
          <a style="color: black; font-size: 30px;"id = "backhome">기숙사로 돌아가기까지</a>
         <a style="color: rgb(244, 11, 126); font-size: 50px" id="second_fin">0시간 0분 0초</a>
         <a style="color:black; font-size: 30px" id = "remain">남았습니다</a>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br>
+        <a style="color: black; font-size: 60px;">오늘의 주번: </a>
+        <a style="color: black; font-size: 60px;" id = 'weeklyduty'>000</a>
+<br><br><br><br><br><br><br>
          <a style="color: rgb(150, 150, 150); font-size: 15px;">🔥@janu_0120 팔로우🔥</a><br>
          <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">오류 제보나 건의사항 보내주세요!</a><br>
          <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">계속 기능을 추가할 예정입니다!</a><br>
@@ -66,6 +69,16 @@ var _hour = _minute * 60;
 var _day = _hour * 24;
 var timer;
 
+function getWeeklyDuty() {
+    var WD = new Array('김경민','김동균','김률환','김민서','김성현','김성훈','김은교','김은우','김채연','김태령','김태우','나현우','노우석','문정민','배세웅','송가영','송민석','신예준','오명훈','우민엽,','이승준','이윤민','이재찬','이 환','전남주','전민우','정하윤','정해린','조휘성','차유현','한예진','황선우');
+    var today_WD = new Date().getDay();
+    var today_weekly_Duty = WD[today_WD+3];
+
+    return today_weekly_Duty;
+}
+todays_weekly_Duty = getWeeklyDuty()
+
+
 function getTodayLabel() {
     
     var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
@@ -103,6 +116,7 @@ document.getElementById(id).innerHTML = hours + '시간 ';
 document.getElementById(id).innerHTML += minutes + '분 ';
 document.getElementById(id).innerHTML += seconds + '초';
 document.getElementById('day-date').innerHTML = y +'년 '+ m + '월 ' + d +'일 ' + today_week + ' 입니다.';
+document.getElementById('weeklyduty').innerHTML = todays_weekly_Duty;
 }
 timer = setInterval(showRemaining, 1000);
 }
