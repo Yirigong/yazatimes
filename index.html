@@ -16,26 +16,37 @@
         </style>
     </head>
     <body>
-        <br><br><br><br>
-        <img src="https://user-images.githubusercontent.com/79938350/111923889-d1aec300-8ae4-11eb-99fc-c8e833cb7559.png"
-        style= float:left; margin-right:20px; width='600px' alt='시정표가 안보이면 개발자(@janu_0120)에게 DM주세요'
+        <br><br><br>
+        <img src="https://user-images.githubusercontent.com/79938350/115543904-e09fb580-a2dc-11eb-987a-82918f8f8f46.jpg"
+        style= float:left; margin-right:20px; width='600px' alt='시정표가 안보이면 개발자(@janu_0120)에게 DM주세요' id = 'photo'
         >
         
          <a style="color: black; font-size: 60px;">오늘은</a><br>
-         <a id="day-date" style="color: rgb(244, 11, 126); font-size: 30px;">0년 0월 0일 0요일 입니다. </a>
+         <a id="day-date" style="color: rgb(244, 11, 126); font-size: 60px;">0년 0월 0일 0요일 입니다. </a>
          <br><br><br><br><br><br><br><br>
          <a style="color: black; font-size: 30px;"id = "backhome">기숙사로 돌아가기까지</a>
         <a style="color: rgb(244, 11, 126); font-size: 50px" id="second_fin">0시간 0분 0초</a>
         <a style="color:black; font-size: 30px" id = "remain">남았습니다</a>
 <br><br><br><br><br><br><br>
-        <a style="color: black; font-size: 60px;">오늘의 주번: </a>
-        <a style="color: black; font-size: 60px;" id = 'weeklyduty'>000</a>
 <br><br><br><br><br><br><br>
          <a style="color: rgb(150, 150, 150); font-size: 15px;">🔥@janu_0120 팔로우🔥</a><br>
          <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">오류 제보나 건의사항 보내주세요!</a><br>
          <a id="subj" style="color: rgb(150, 150, 150); font-size: 15px;">계속 기능을 추가할 예정입니다!</a><br>
  <script>
-    setTimeout(function(){
+function getTodayLabel() {
+    
+    var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
+    
+    var today = new Date().getDay();
+    var todayLabel = week[today];
+    
+    return todayLabel;
+}
+ 
+today_week=getTodayLabel()
+console.log(today_week);
+
+setTimeout(function(){
         location.reload();
     },300000);
     
@@ -53,43 +64,24 @@
     }
 
 
-var weekday = m + "/" + d + "/" + y + " " + "22:00:00"
+var weekday = m + "/" + d + "/" + y + " " + "22:50:00"
 var weekend = m + "/" + d + "/" + y + " " + "22:30:00"
 
+switch(today_week){
+    case '토요일':
+    case '일요일': CountDownTimer(weekend, 'second_fin'); console.log("주말"); console.log(weekend); break;
+    default: CountDownTimer(weekday,'second_fin'); console.log("평일"); console.log(weekday); break;
+}
 
-CountDownTimer(weekday, 'second_fin');
-
-function CountDownTimer(dt, id)
+function CountDownTimer(a, id)
 {
-var end = new Date(dt);
+var end = new Date(a);
 
 var _second = 1000;
 var _minute = _second * 60;
 var _hour = _minute * 60;
 var _day = _hour * 24;
 var timer;
-
-function getWeeklyDuty() {
-    var WD = new Array('김경민','김동균','김률환','김민서','김성현','김성훈','김은교','김은우','김채연','김태령','김태우','나현우','노우석','문정민','배세웅','송가영','송민석','신예준','오명훈','우민엽,','이승준','이윤민','이재찬','이 환','전남주','전민우','정하윤','정해린','조휘성','차유현','한예진','황선우');
-    var today_WD = new Date().getDay();
-    var today_weekly_Duty = WD[today_WD+3];
-
-    return today_weekly_Duty;
-}
-todays_weekly_Duty = getWeeklyDuty()
-
-
-function getTodayLabel() {
-    
-    var week = new Array('일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일');
-    
-    var today = new Date().getDay();
-    var todayLabel = week[today];
-    
-    return todayLabel;
-}
- 
-today_week=getTodayLabel()
 
 
 function showRemaining() {
@@ -116,7 +108,6 @@ document.getElementById(id).innerHTML = hours + '시간 ';
 document.getElementById(id).innerHTML += minutes + '분 ';
 document.getElementById(id).innerHTML += seconds + '초';
 document.getElementById('day-date').innerHTML = y +'년 '+ m + '월 ' + d +'일 ' + today_week + ' 입니다.';
-document.getElementById('weeklyduty').innerHTML = todays_weekly_Duty;
 }
 timer = setInterval(showRemaining, 1000);
 }
